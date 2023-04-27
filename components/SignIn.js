@@ -32,25 +32,22 @@ function SignIn() {
         open={open}
         onOk={handleOk}
         onCancel={handleCancel}
-        footer={null}>
+        footer={null}
+      >
         <div className={styles.modalContent}>
-          <img className={styles.logoModal} src="/logo1.png" alt="logo"/>
+          <img className={styles.logoModal} src="/logo1.png" alt="logo" />
           <h1>Connect to Hackatweet</h1>
-          <input
-            className={styles.inputs}
-            type="text"
-            placeholder="Username" />
-          <input 
-            className={styles.inputs} 
-            type="text"
-            placeholder="Password"/>
+          <input className={styles.inputs} type="text" placeholder="Username" />
+          <input className={styles.inputs} type="text" placeholder="Password" />
           <Button
             key="submit"
             type="signInModal"
             loading={loading}
-            onClick={handleOk}>
-            Sign In 
-            </Button>
+            href="/tweet"
+            onClick={handleOk}
+          >
+            Sign In
+          </Button>
         </div>
       </Modal>
     </>

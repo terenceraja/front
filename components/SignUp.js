@@ -11,6 +11,7 @@ function SignUp() {
   };
 
   const handleOk = () => {
+    console.log("link");
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -49,6 +50,7 @@ function SignUp() {
             type="signUpModal"
             loading={loading}
             onClick={handleOk}
+            href="/tweet"
           >
             Sign up
           </Button>
