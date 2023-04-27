@@ -85,7 +85,6 @@ function SignUp() {
             type="signUpModal"
             loading={loading}
             onClick={handleOk}
-            // href="/tweet"
           >
             Sign up
           </Button>

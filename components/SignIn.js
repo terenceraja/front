@@ -5,12 +5,32 @@ import styles from "../styles/SignIn.module.css";
 function SignIn() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const showModal = () => {
     setOpen(true);
   };
 
   const handleOk = () => {
+    const data = {
+      username: username,
+      password: password,
+    };
+
+    fetch("http://localhost:3000/users/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.result) {
+          location.href = "/tweet";
+        }
+      });
+
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -18,27 +38,25 @@ function SignIn() {
     }, 3000);
   };
 
-  const handleCancel = () => {
-    setOpen(false);
-  };
-
   return (
     <>
       <Button type="signInPass" onClick={showModal}>
         Sign in
       </Button>
-      <Modal
-        centered
-        open={open}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={null}
-      >
+      <Modal centered open={open} onOk={handleOk} footer={null}>
         <div className={styles.modalContent}>
           <img className={styles.logoModal} src="/logo1.png" alt="logo" />
           <h1>Connect to Hackatweet</h1>
-          <input className={styles.inputs} type="text" placeholder="Username" />
           <input
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+            className={styles.inputs}
+            type="text"
+            placeholder="Username"
+          />
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
             className={styles.inputs}
             type="password"
             placeholder="Password"
@@ -47,7 +65,6 @@ function SignIn() {
             key="submit"
             type="signInModal"
             loading={loading}
-            href="/tweet"
             onClick={handleOk}
           >
             Sign In
