@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
+import styles from "../styles/SignIn.module.css";
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ function SignIn() {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="signInPass" onClick={showModal}>
         Sign in
       </Button>
       <Modal
@@ -31,19 +32,26 @@ function SignIn() {
         open={open}
         onOk={handleOk}
         onCancel={handleCancel}
-        footer={[
+        footer={null}>
+        <div className={styles.modalContent}>
+          <img className={styles.logoModal} src="/logo1.png" alt="logo"/>
+          <h1>Connect to Hackatweet</h1>
+          <input
+            className={styles.inputs}
+            type="text"
+            placeholder="Username" />
+          <input 
+            className={styles.inputs} 
+            type="text"
+            placeholder="Password"/>
           <Button
             key="submit"
-            type="primary"
+            type="signInModal"
             loading={loading}
-            onClick={handleOk}
-          >
-            Sign in
-          </Button>,
-        ]}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+            onClick={handleOk}>
+            Sign In 
+            </Button>
+        </div>
       </Modal>
     </>
   );

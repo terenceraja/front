@@ -13,3 +13,44 @@ body {
   background-color: rgb(32, 33, 41);
   color: white;
 }
+
+.ant-modal .ant-btn-signInModal {
+  background-color: white;
+  border-radius: 20px;
+  width: 200px;
+  color: black;
+  font-weight: bolder;
+}
+
+:where(.css-dev-only-do-not-override-yp8pcc).ant-modal .ant-modal-close-x {
+  color: white;
+}
+
+.ant-modal .ant-btn-signInLoginModal {
+  background-color: white;
+  border-radius: 20px;
+  width: 200px;
+  color: black;
+  font-weight: bolder;
+}
+
+:where(.css-dev-only-do-not-override-yp8pcc).ant-modal .ant-modal-close-x {
+  color: white;
+}
+
+.ant-modal .ant-btn-signInLoginModal {
+  background-color: white;
+  border-radius: 20px;
+  width: 200px;
+  color: black;
+  font-weight: bolder;
+}
+
+.ant-btn-signInPass {
+  width: 200px;
+  border-radius: 20px;
+  color: #fff;
+  background-color: rgb(32, 33, 41);
+  border: #fff solid 1px;
+  box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+}

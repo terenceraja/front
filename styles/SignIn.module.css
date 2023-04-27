@@ -1,0 +1,24 @@
+.logoModal {
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+}
+
+.modalTxt {
+    margin-top: 0;
+}
+
+.inputs {
+    height: 40px;
+    width: 200px;
+}
