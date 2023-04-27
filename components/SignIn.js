@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import styles from "../styles/SignIn.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addUserToStore } from "../reducers/users";
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.users.value);
 
   const showModal = () => {
     setOpen(true);
   };
 
   const handleOk = () => {
+    
     const data = {
       username: username,
       password: password,
@@ -25,9 +30,13 @@ function SignIn() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.result) {
+          dispatch(addUserToStore(data.user));
+          console.log(user)
           location.href = "/tweet";
+        } else {
+          setUsername("")
+          setPassword("")
         }
       });
 
@@ -37,6 +46,7 @@ function SignIn() {
       setOpen(false);
     }, 3000);
   };
+
   const handleCancel = () => {
     setOpen(false);
   };

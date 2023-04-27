@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal } from "antd";
 import styles from "../styles/SignUp.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addUserToStore } from "../reducers/users";
 
 function SignUp() {
   const [loading, setLoading] = useState(false);
@@ -8,6 +10,9 @@ function SignUp() {
   const [firstname, setFirstname] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.users.value);
+  console.log(user)
 
   const showModal = () => {
     setOpen(true);
@@ -20,7 +25,7 @@ function SignUp() {
       username: username,
       password: password,
     };
-console.log(data)
+
     fetch("http://localhost:3000/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -28,9 +33,13 @@ console.log(data)
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.result) {
-          location.href = "/tweet";
+          dispatch(addUserToStore(data.user));
+          console.log(user)
+        } else {
+          setUsername("")
+          setPassword("")
+          setFirstname("")
         }
       });
 

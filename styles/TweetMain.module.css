@@ -13,14 +13,50 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px;
+  padding: 50px;
   color: white;
+
 }
 
 .logoImageRight {
   height: 40px;
   width: 40px;
   object-fit: contain;
+}
+
+.userContent{
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+
+}
+
+.userNames{
+  display: flex;
+  gap: 15px
+}
+
+.userNameTxt{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.username{
+  margin: 0px 0px 20px 0px
+}
+
+.firstname{
+  margin: 0px 0px 0px 0px
+}
+
+
+
+.logoUser{
+  margin-top: 5px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
 }
 
 /*CENTER*/
