@@ -44,7 +44,11 @@ function SignUp() {
             placeholder="Firstname"
           />
           <input className={styles.inputs} type="text" placeholder="Username" />
-          <input className={styles.inputs} type="text" placeholder="Password" />
+          <input
+            className={styles.inputs}
+            type="password"
+            placeholder="Password"
+          />
           <Button
             key="submit"
             type="signUpModal"

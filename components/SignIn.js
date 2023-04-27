@@ -38,7 +38,11 @@ function SignIn() {
           <img className={styles.logoModal} src="/logo1.png" alt="logo" />
           <h1>Connect to Hackatweet</h1>
           <input className={styles.inputs} type="text" placeholder="Username" />
-          <input className={styles.inputs} type="text" placeholder="Password" />
+          <input
+            className={styles.inputs}
+            type="password"
+            placeholder="Password"
+          />
           <Button
             key="submit"
             type="signInModal"
