@@ -8,3 +8,8 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.ant-modal .ant-modal-content {
+  background-color: rgb(32, 33, 41);
+  color: white;
+}
