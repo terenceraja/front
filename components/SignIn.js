@@ -37,13 +37,20 @@ function SignIn() {
       setOpen(false);
     }, 3000);
   };
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   return (
     <>
       <Button type="signInPass" onClick={showModal}>
         Sign in
       </Button>
-      <Modal centered open={open} onOk={handleOk} footer={null}>
+      <Modal 
+      centered open={open} 
+      onOk={handleOk} 
+      footer={null} 
+      onCancel={handleCancel}>
         <div className={styles.modalContent}>
           <img className={styles.logoModal} src="/logo1.png" alt="logo" />
           <h1>Connect to Hackatweet</h1>

@@ -20,7 +20,7 @@ function SignUp() {
       username: username,
       password: password,
     };
-
+console.log(data)
     fetch("http://localhost:3000/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -28,6 +28,7 @@ function SignUp() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (data.result) {
           location.href = "/tweet";
         }
