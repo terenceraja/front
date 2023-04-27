@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Modal } from "antd";
 import styles from "../styles/SignUp.module.css";
 
 function SignUp() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [firstname, setFirstname] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const showModal = () => {
     setOpen(true);
@@ -12,6 +15,22 @@ function SignUp() {
 
   const handleOk = () => {
     console.log("link");
+    const data = {
+      firstname: firstname,
+      username: username,
+      password: password,
+    };
+
+    fetch("http://localhost:3000/users/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -39,12 +58,22 @@ function SignUp() {
           <img className={styles.logoModal} src="/logo1.png" alt="logo" />
           <h1 className={styles.modalTxt}>Create you hackatweet account</h1>
           <input
+            onChange={(e) => setFirstname(e.target.value)}
+            value={firstname}
             className={styles.inputs}
             type="text"
             placeholder="Firstname"
           />
-          <input className={styles.inputs} type="text" placeholder="Username" />
           <input
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+            className={styles.inputs}
+            type="text"
+            placeholder="Username"
+          />
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
             className={styles.inputs}
             type="password"
             placeholder="Password"
@@ -54,7 +83,7 @@ function SignUp() {
             type="signUpModal"
             loading={loading}
             onClick={handleOk}
-            href="/tweet"
+            // href="/tweet"
           >
             Sign up
           </Button>
