@@ -34,7 +34,6 @@ body {
   color: white;
 }
 
-
 .ant-btn-signInPass {
   width: 200px;
   border-radius: 20px;
@@ -46,6 +45,14 @@ body {
 
 .ant-btn-signUp {
   width: 200px;
+  border-radius: 20px;
+  color: #fff;
+  background-color: #1677ff;
+  box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+}
+
+.ant-btn-tweetBtn {
+  width: 100px;
   border-radius: 20px;
   color: #fff;
   background-color: #1677ff;
