@@ -24,7 +24,7 @@ function SignUp() {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="signUp" onClick={showModal}>
         Sign up
       </Button>
       <Modal
@@ -33,7 +33,6 @@ function SignUp() {
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
-        className={styles.mod}
       >
         <div className={styles.modalContent}>
           <img className={styles.logoModal} src="/logo1.png" alt="logo" />
@@ -47,7 +46,7 @@ function SignUp() {
           <input className={styles.inputs} type="text" placeholder="Password" />
           <Button
             key="submit"
-            type="primary"
+            type="signUpModal"
             loading={loading}
             onClick={handleOk}
           >
