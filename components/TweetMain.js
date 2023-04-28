@@ -28,6 +28,21 @@ function TweetMain() {
     }
   };
 
+  const tweetClick = () => {
+    console.log("tweeted");
+    const data = {
+      tweet: tweetMessage,
+      token: user.token,
+    };
+
+    fetch("http://localhost:3000/users/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    setTweetMessage("");
+  };
+
   return (
     <div className={styles.mainDiv}>
       <div className={styles.leftDiv}>
@@ -68,7 +83,9 @@ function TweetMain() {
           />
           <div className={styles.tweetContent}>
             <span>{tweetMessage.length}/280</span>
-            <Button type="tweetBtn">Tweet</Button>
+            <Button onClick={() => tweetClick()} type="tweetBtn">
+              Tweet
+            </Button>
           </div>
         </div>
 
