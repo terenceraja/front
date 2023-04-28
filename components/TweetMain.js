@@ -3,6 +3,7 @@ import { Button, Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { addUserToStore, removeUserFromStore } from "../reducers/users";
 import { useState } from "react";
+import Tweet from "./Tweet";
 
 function TweetMain() {
   const [tweetMessage, setTweetMessage] = useState("");
@@ -48,10 +49,12 @@ function TweetMain() {
         </div>
       </div>
 
+      {/*CENTER*/}
+
       <div className={styles.CenterDiv}>
+        {/*TOP*/}
         <div className={styles.CenterTopDiv}>
           <h1 className={styles.homeTxt}>HOME</h1>
-
           <input
             maxLength="280"
             onInput={maxLengthCheck}
@@ -63,13 +66,29 @@ function TweetMain() {
             type="text"
             placeholder="What's up?"
           />
-
           <div className={styles.tweetContent}>
             <span>{tweetMessage.length}/280</span>
             <Button type="tweetBtn">Tweet</Button>
           </div>
         </div>
+
+        {/*BOT*/}
+        <div className={styles.CenterBotDiv}>
+          <Tweet />
+          <Tweet />
+          <Tweet />
+          <Tweet />
+          <Tweet />
+          <Tweet />
+          <Tweet />
+          <Tweet />
+          <Tweet />
+          <Tweet />
+        </div>
       </div>
+
+      {/*RIGHT*/}
+
       <div className={styles.rightDiv}></div>
     </div>
   );
