@@ -1,20 +1,31 @@
 import styles from "../styles/TweetMain.module.css";
 import { Button, Modal } from "antd";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { addUserToStore, removeUserFromStore } from "../reducers/users";
+import { useState } from "react";
 
 function TweetMain() {
+  const [tweetMessage, setTweetMessage] = useState("");
+
   const user = useSelector((state) => state.users.value);
   const dispatch = useDispatch();
   console.log(user);
 
-
-  const logoutBtn = () =>{
-    console.log('click')
+  const logoutBtn = () => {
+    console.log("click");
     dispatch(removeUserFromStore());
-  
+
     location.href = "/";
-   }
+  };
+
+  const maxLengthCheck = (object) => {
+    if (object.target.value.length > object.target.maxLength) {
+      object.target.value = object.target.value.slice(
+        0,
+        object.target.maxLength
+      );
+    }
+  };
 
   return (
     <div className={styles.mainDiv}>
@@ -31,7 +42,9 @@ function TweetMain() {
               <h3 className={styles.username}>@{user.username}</h3>
             </div>
           </div>
-          <Button onClick={() => logoutBtn()} type="logoutBtn">Logout</Button>
+          <Button onClick={() => logoutBtn()} type="logoutBtn">
+            Logout
+          </Button>
         </div>
       </div>
 
@@ -40,13 +53,19 @@ function TweetMain() {
           <h1 className={styles.homeTxt}>HOME</h1>
 
           <input
+            maxLength="280"
+            onInput={maxLengthCheck}
+            onChange={(e) => {
+              setTweetMessage(e.target.value);
+            }}
+            value={tweetMessage}
             className={styles.tweetInput}
             type="text"
             placeholder="What's up?"
           />
 
           <div className={styles.tweetContent}>
-            <span>counter</span>
+            <span>{tweetMessage.length}/280</span>
             <Button type="tweetBtn">Tweet</Button>
           </div>
         </div>
