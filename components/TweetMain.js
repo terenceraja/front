@@ -123,9 +123,6 @@ function TweetMain() {
       {/*RIGHT*/}
 
       <div className={styles.rightDiv}>
-        <div>
-          <img className={styles.brice} src="/brice.png" alt="logo" />
-        </div>
       </div>
     </div>
   );
