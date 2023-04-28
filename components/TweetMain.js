@@ -2,15 +2,27 @@ import styles from "../styles/TweetMain.module.css";
 import { Button, Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { addUserToStore, removeUserFromStore } from "../reducers/users";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Tweet from "./Tweet";
 
 function TweetMain() {
   const [tweetMessage, setTweetMessage] = useState("");
-
+  const [tweetData, setTweetData] = useState([]);
   const user = useSelector((state) => state.users.value);
   const dispatch = useDispatch();
   console.log(user);
+
+  useEffect(() => {
+    fetchAllTweets();
+  }, []);
+
+  const fetchAllTweets = () => {
+    fetch("http://localhost:3000/tweet/allTweets")
+      .then((response) => response.json())
+      .then((data) => {
+        setTweetData(data.allTweet);
+      });
+  };
 
   const logoutBtn = () => {
     console.log("click");
@@ -29,19 +41,34 @@ function TweetMain() {
   };
 
   const tweetClick = () => {
-    console.log("tweeted");
     const data = {
       tweet: tweetMessage,
       token: user.token,
+      username: user.username,
+      firstname: user.firstname,
     };
 
-    fetch("http://localhost:3000/users/signup", {
+    fetch("http://localhost:3000/tweet", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    });
+    }).then(() => fetchAllTweets());
     setTweetMessage("");
   };
+
+  let tweets = tweetData.map((data, i) => {
+    return (
+      <Tweet
+        key={i}
+        id={data._id}
+        tweet={data.tweet}
+        token={data.token}
+        username={data.username}
+        firstname={data.firstname}
+        fetch={fetchAllTweets}
+      />
+    );
+  });
 
   return (
     <div className={styles.mainDiv}>
@@ -70,7 +97,7 @@ function TweetMain() {
         {/*TOP*/}
         <div className={styles.CenterTopDiv}>
           <h1 className={styles.homeTxt}>HOME</h1>
-          <input
+          <textarea
             maxLength="280"
             onInput={maxLengthCheck}
             onChange={(e) => {
@@ -90,18 +117,7 @@ function TweetMain() {
         </div>
 
         {/*BOT*/}
-        <div className={styles.CenterBotDiv}>
-          <Tweet />
-          <Tweet />
-          <Tweet />
-          <Tweet />
-          <Tweet />
-          <Tweet />
-          <Tweet />
-          <Tweet />
-          <Tweet />
-          <Tweet />
-        </div>
+        <div className={styles.CenterBotDiv}>{tweets.reverse()}</div>
       </div>
 
       {/*RIGHT*/}

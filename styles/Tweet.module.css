@@ -1,6 +1,34 @@
-.tweet {
-  height: 100px;
+.tweetContent {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
   width: 100%;
-  background-color: bisque;
-  border: 1px solid black;
+  background-color: rgb(32, 33, 41);
+  border: 0.5px solid rgb(126, 126, 126);
+  color: white;
+  padding: 20px;
+  gap: 20px;
 }
+
+.logoUser {
+  margin-top: 5px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+}
+
+.topTweet {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* .trashIcon {
+  display: none;
+} */

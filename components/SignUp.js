@@ -12,7 +12,7 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users.value);
-  console.log(user)
+  console.log(user);
 
   const showModal = () => {
     setOpen(true);
@@ -35,11 +35,12 @@ function SignUp() {
       .then((data) => {
         if (data.result) {
           dispatch(addUserToStore(data.user));
-          console.log(user)
+          console.log(user);
+          location.href = "/tweet";
         } else {
-          setUsername("")
-          setPassword("")
-          setFirstname("")
+          setUsername("");
+          setPassword("");
+          setFirstname("");
         }
       });
 
