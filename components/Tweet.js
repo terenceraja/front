@@ -53,6 +53,7 @@ function Tweet(props) {
       <div className={styles.icons}>
         <span>
           <FontAwesomeIcon
+            className={styles.likeIcon}
             onClick={() => likeClick()}
             icon={faHeart}
             style={likeStyle}

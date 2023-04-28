@@ -29,6 +29,10 @@
   gap: 10px;
 }
 
-/* .trashIcon {
-  display: none;
-} */
+.trashIcon:hover {
+  cursor: pointer;
+}
+
+.likeIcon:hover {
+  cursor: pointer;
+}
